@@ -13,7 +13,7 @@ function generate() {
   // Select a random author from the authors array
   let author = authors[Math.floor(Math.random() * authors.length)];
 
-  // Get the corresponding quote for the selected author
+  // Get the corresponding quote for the selected author (Access to the authors value)
   let quote = quotes[author];
 
   // Display the selected author in the HTML with class 'author-js'

@@ -6,7 +6,7 @@ let letters = [
   "!", "@", "#", "$", "%", "&", "?"
 ];
 
-// Define a function to generate a random password
+// Define a function to generate a 1random password
 function generatePassword() {
   // Initialize an empty string to hold the password
   let passCode = '';
