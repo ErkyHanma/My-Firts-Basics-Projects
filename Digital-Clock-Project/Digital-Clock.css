@@ -7,11 +7,11 @@ body, .image-background-day, .image-background-night {
 
 
 .image-background-day {
-  background-image: url(uJFrUS.jpg);
+  background-image: url(images/uJFrUS.jpg);
 }
 
 .image-background-night {
-  background-image: url(clear-sky-night-landscape-4k-1e-1920x1080.jpg);
+  background-image: url(images/clear-sky-night-landscape-4k-1e-1920x1080.jpg);
 }
 
 .container {

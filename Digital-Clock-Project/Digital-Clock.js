@@ -15,6 +15,7 @@ function updateBackgroundAndAmPmClasses(hour) {
   document.querySelector('.ampm-js').innerHTML = ampm;
 }
 
+
 let timeoutId;
 
 function calculateTime() {
