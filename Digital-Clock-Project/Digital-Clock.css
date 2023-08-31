@@ -1,0 +1,32 @@
+body, .image-background-day, .image-background-night {
+  margin: 0;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.image-background-day {
+  background-image: url(uJFrUS.jpg);
+}
+
+.image-background-night {
+  background-image: url(clear-sky-night-landscape-4k-1e-1920x1080.jpg);
+}
+
+.container {
+  height: 100vh;
+  width: 95%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock {
+  background-color: rgba(0, 0, 0, 0.233);
+  font-size: 90px;
+  font-weight: bold;
+  color: white;
+  padding: 20px 40px;
+}
