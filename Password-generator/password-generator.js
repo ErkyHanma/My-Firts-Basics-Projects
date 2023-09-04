@@ -1,4 +1,3 @@
-// Define an array of characters for generating passwords
 let letters = [
   "1", "2", "3", "4", "5", "6", "7", "8", "9",
   "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m",
@@ -6,23 +5,32 @@ let letters = [
   "!", "@", "#", "$", "%", "&", "?"
 ];
 
-// Define a function to generate a 1random password
-function generatePassword() {
-  // Initialize an empty string to hold the password
-  let passCode = '';
+const rangeOfNumbers = document.getElementById("rangeOfNumbers")
+const amountOfNumbers = document.getElementById("amountOfNumbers")
 
-  // Generate a password of length 8
-  for (let i = 0; i <= 7; i++) {
-    // Generate a random index within the range of letters array
+
+rangeOfNumbers.addEventListener('input', getNumber )
+amountOfNumbers.addEventListener('input', getNumber)
+
+function getNumber(e) {
+let nums = e.target.value
+amountOfNumbers.value = nums
+rangeOfNumbers.value = nums
+}
+
+
+function generatePassword() {
+  let passCode = '';
+  for (let i = 0; i < amountOfNumbers.value; i++) {
+ 
     let randomNumber = Math.floor(Math.random() * letters.length);
 
-    // Add the selected character to the password
     passCode += letters[randomNumber];
   }
 
-  // Display the generated password in the HTML with class 'password-js'
+
   document.querySelector('.password-js').innerHTML = passCode;
 }
 
-// Add a click event listener to the button with class 'btn-js'
+
 document.querySelector('.btn-js').addEventListener('click', generatePassword);
