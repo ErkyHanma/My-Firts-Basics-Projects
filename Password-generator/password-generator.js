@@ -73,24 +73,37 @@ function removeClass() {
   LOW_CLASS.classList.remove('low2')
   MID_CLASS.classList.remove('mid2')
   HIGH_CLASS.classList.remove('high2')
+  //passwordSt.classList.remove('div42')
+  
+
 }
 
 function addClass(passCode) {
-  if(passCode.length <= 7 || passCode.length > 7 ) {
+  let strong = ''
+
+  if (passCode.length <= 7 || passCode.length > 7 ) {
     LOW_CLASS.classList.add('low2')
+    strong += 'low'
+   
   }
   
-  if(passCode.length >= 9) {
+  if (passCode.length >= 9) {
     MID_CLASS.classList.add('mid2')
+    strong += 'mid'
+    
   }
   
-  if(passCode.length >= 14) {
+  if (passCode.length >= 14) {
     HIGH_CLASS.classList.add('high2')
+    strong += 'high'
   }
   
-  if(1 < 2) {
+  if (1 < 2) {
     passwordSt.classList.add('div42')
+    document.querySelector('.div42').textContent = `Your password is: ${strong}`
   }
+
+  console.log(strong)
 }
 
 
