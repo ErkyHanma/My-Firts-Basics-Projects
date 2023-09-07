@@ -1,12 +1,15 @@
-let characters = [
-  "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m",
-  "n", "l", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-];
+function generateCharacterSet(start, end) {
+  const result = [];
+  for (let i = start.charCodeAt(0); i <= end.charCodeAt(0); i++) {
+    result.push(String.fromCharCode(i));
+  }
+  return result;
+}
 
-let upperCase = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "M",
-"N", "L", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",]
-let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-let symbols = ["!", "@", "#", "$", "%", "&", "?", ".", ",", ":", ";"]
+const characters = generateCharacterSet('a', 'z');
+const upperCase = generateCharacterSet('A', 'Z');
+const numbers = generateCharacterSet('1', '9');
+const symbols = ['!', '@', '#', '$', '%', '&', '?', '.', ',', ':', ';'];
 
 
 const rangeOfNumbers = document.getElementById("rangeOfNumbers")
@@ -73,42 +76,41 @@ function removeClass() {
   LOW_CLASS.classList.remove('low2')
   MID_CLASS.classList.remove('mid2')
   HIGH_CLASS.classList.remove('high2')
-  //passwordSt.classList.remove('div42')
   
 
 }
 
 function addClass(passCode) {
-  let strong = ''
-
-  if (passCode.length <= 7 || passCode.length > 7 ) {
-    LOW_CLASS.classList.add('low2')
-    strong += 'low'
-   
+  if (passCode.length <= 6) {
+    LOW_CLASS.classList.add('low2');
+    MID_CLASS.classList.remove('mid2');
+    HIGH_CLASS.classList.remove('high2');
+    passwordSt.classList.add('div42');
+    document.querySelector('.div42').textContent = `Your password strength is: low`;
+  } else if 
+  ( passCode.length >= 7 && passCode.length < 8 ||
+    passCode.length >= 7 && passCode.length <= 25 && !upperCaseInput.checked && !numbersInput.checked && !symbolsInput.checked ||
+    passCode.length >= 7 && passCode.length <= 25 && !upperCaseInput.checked && !numbersInput.checked  ||
+    passCode.length >= 7 && passCode.length <= 25 && !upperCaseInput.checked && !symbolsInput.checked  ||
+    passCode.length >= 7 && passCode.length <= 25 && !numbersInput.checked && !symbolsInput.checked) {
+    LOW_CLASS.classList.add('low2');
+    MID_CLASS.classList.add('mid2');
+    HIGH_CLASS.classList.remove('high2');
+    passwordSt.classList.add('div42');
+    document.querySelector('.div42').textContent = `Your password strength is: mid`;
+  } else if 
+  ( passCode.length > 25 ||
+    passCode.length >= 8 && upperCaseInput.checked && numbersInput.checked ||
+    passCode.length >= 8 && upperCaseInput.checked && symbolsInput.checked ||
+    passCode.length >= 8 && numbersInput.checked && symbolsInput.checked || 
+    passCode.length >= 8 && numbersInput.checked && symbolsInput.checked && upperCaseInput.checked) {
+    LOW_CLASS.classList.add('low2');
+    MID_CLASS.classList.add('mid2');
+    HIGH_CLASS.classList.add('high2');
+    passwordSt.classList.add('div42');
+    document.querySelector('.div42').textContent = `Your password strength is: high`;
   }
-  
-  if (passCode.length >= 9) {
-    MID_CLASS.classList.add('mid2')
-    strong += 'mid'
-    
-  }
-  
-  if (passCode.length >= 14) {
-    HIGH_CLASS.classList.add('high2')
-    strong += 'high'
-  }
-  
-  if (1 < 2) {
-    passwordSt.classList.add('div42')
-    document.querySelector('.div42').textContent = `Your password is: ${strong}`
-  }
-
-  console.log(strong)
 }
-
-
-
-
 
 
 document.querySelector('.btn-js').addEventListener('click', generatePassword);
