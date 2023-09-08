@@ -18,6 +18,7 @@ const upperCaseInput = document.querySelector('.checkbox-uppercase')
 const numbersInput = document.querySelector('.checkbox-numbers')
 const symbolsInput = document.querySelector('.checkbox-symbols')
 
+
 const LOW_CLASS = document.querySelector('.low')
 const MID_CLASS = document.querySelector('.mid')
 const HIGH_CLASS = document.querySelector('.high')
@@ -26,6 +27,14 @@ let passwordSt = document.querySelector('.div4')
 
 rangeOfNumbers.addEventListener('input', getNumber )
 amountOfNumbers.addEventListener('input', getNumber)
+rangeOfNumbers.addEventListener('input', generatePassword )
+amountOfNumbers.addEventListener('input', generatePassword)
+
+
+const copy = document.querySelector('.fa-js')
+
+
+
 
 function getNumber(e) {
 let nums = e.target.value
@@ -88,7 +97,7 @@ function addClass(passCode) {
     passwordSt.classList.add('div42');
     document.querySelector('.div42').textContent = `Your password strength is: low`;
   } else if 
-  ( passCode.length >= 7 && passCode.length < 8 ||
+  ( passCode.length < 8 ||
     passCode.length >= 7 && passCode.length <= 25 && !upperCaseInput.checked && !numbersInput.checked && !symbolsInput.checked ||
     passCode.length >= 7 && passCode.length <= 25 && !upperCaseInput.checked && !numbersInput.checked  ||
     passCode.length >= 7 && passCode.length <= 25 && !upperCaseInput.checked && !symbolsInput.checked  ||
@@ -115,6 +124,34 @@ function addClass(passCode) {
 
 document.querySelector('.btn-js').addEventListener('click', generatePassword);
 
+
+window.addEventListener('load',() => {
+  generatePassword()
+});
+
+
+
+function copyToClipboard() {
+  const passwordElement = document.querySelector('.password-js');
+  const passwordText = passwordElement.textContent;
+
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = passwordText;
+
+
+  document.body.appendChild(tempTextArea);
+
+
+  tempTextArea.select();
+  document.execCommand('copy');
+
+
+  document.body.removeChild(tempTextArea);
+
+  alert("Copied the text: " + passwordText);
+}
+
+copy.addEventListener('click', copyToClipboard)
 
 
 
