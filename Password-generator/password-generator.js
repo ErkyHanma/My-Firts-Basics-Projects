@@ -40,6 +40,7 @@ function getNumber(e) {
 let nums = e.target.value
 amountOfNumbers.value = nums
 rangeOfNumbers.value = nums
+
 }
 
 
@@ -72,12 +73,18 @@ function generatePassword() {
   
 
 }
-
 console.log(passCode.length)
 
 addClass(passCode)
 
-document.querySelector('.password-js').innerHTML = passCode;
+if (amountOfNumbers.value > 50) {
+  alert('The password exceeded maximum values')
+  console.log(amountOfNumbers.value)
+} else {
+  document.querySelector('.password-js').innerHTML = passCode;
+}
+
+
 
 }
 
@@ -135,23 +142,19 @@ function copyToClipboard() {
   const passwordElement = document.querySelector('.password-js');
   const passwordText = passwordElement.textContent;
 
-  const tempTextArea = document.createElement('textarea');
-  tempTextArea.value = passwordText;
 
-
-  document.body.appendChild(tempTextArea);
-
-
-  tempTextArea.select();
-  document.execCommand('copy');
-
-
-  document.body.removeChild(tempTextArea);
-
-  alert("Copied the text: " + passwordText);
+  navigator.clipboard.writeText(passwordText)
+    .then(() => {
+      alert("Copied the text: " + passwordText);
+    })
+    .catch(err => {
+      console.error("Error copying text: ", err);
+    });
 }
 
-copy.addEventListener('click', copyToClipboard)
+
+copy.addEventListener('click', copyToClipboard);
+
 
 
 
